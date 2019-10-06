@@ -1,6 +1,6 @@
 {
   "name": "dotenv-plus-options",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Config module to read .env config files and constructor options mixing in config.options",
   "main": "index.js",
   "scripts": {

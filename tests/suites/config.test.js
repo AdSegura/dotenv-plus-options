@@ -13,14 +13,10 @@ module.exports = function suite(Config) {
     };
 
     before(done => {
-        Helper.create_env_root('.env',
+        Helper.create_env('.env',
             {app_key: 'rootKey123', db_user: 'luser', allowed_cookies: ["k1","k2"]});
 
         done();
-    });
-
-    after(done => {
-        Helper.emptyTmpDir().then(done)
     });
 
     it('should read root .env file', done => {
@@ -30,9 +26,8 @@ module.exports = function suite(Config) {
     });
 
     it('should read custom path .env file', done => {
-        Helper.create_env('foo1', {app_key:'12345', allowed_cookies: ['co1', 'co2']});
-        const config = new Config(null, {path:__dirname + '/../tmp/foo1'});
-        expect(config.options.allowed_cookies[1]).eq('co2');
+        const config = new Config(null, {path: __dirname + '/../lib/.custom_env'});
+        expect(config.options.array1[0]).eq('k1');
         done();
     });
 

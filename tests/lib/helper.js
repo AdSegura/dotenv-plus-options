@@ -12,28 +12,7 @@ module.exports = class Helper {
      */
     static create_env(file, obj){
         const txt = Helper.serializeObjectToEnv(obj);
-        return fs.writeFileSync(Helper.normalizePath(file), txt);
-    }
-
-    /**
-     * Create .env file in TMP_DR
-     *
-     * @param file
-     * @param obj
-     */
-    static create_env_root(file, obj){
-        const txt = Helper.serializeObjectToEnv(obj);
         return fs.writeFileSync(Helper.normalizeRootPath(file), txt);
-    }
-
-    /**
-     * return full path to file in tmp test folder
-     *
-     * @param file
-     * @return {string}
-     */
-    static normalizePath(file){
-        return TMP_DIR + '/' + file
     }
 
     /**
@@ -117,5 +96,4 @@ module.exports = class Helper {
 
         return txt;
     }
-
 };
