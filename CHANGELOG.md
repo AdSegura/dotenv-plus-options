@@ -1,3 +1,6 @@
+# v1.0.4
+* fix readme typo 
+
 # v1.0.3
 * tests, throws adSegConfigError when dotenv cannot read forced .env file with path dotenv options
 

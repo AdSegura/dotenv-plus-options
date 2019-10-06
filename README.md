@@ -1,7 +1,7 @@
 [![Build Status](https://api.travis-ci.org/adsegura/dotenv-plus-options.svg?branch=master)](https://travis-ci.org/adsegura/dotenv-plus-options)
 
 # dotenv-plus-options
-This module loads environment variables from a .env file, if there are one, (with dotenv package)
+This module loads environment variables from a .env file, if there is one .env file at CWD, (with dotenv package)
 and **any options given to the constructor**, mixing it all into `config.options`
 
 Constructor `options` **always takes preference** over options from `.env` file.
