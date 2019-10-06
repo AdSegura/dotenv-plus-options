@@ -1,0 +1,38 @@
+{
+  "name": "dotenv-plus-options",
+  "version": "1.0.0",
+  "description": "Config module to read .env config files and constructor options mixing in config.options",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "babel src -d dist",
+    "build": "babel src -d dist",
+    "test": "NODE_ENV=test node_modules/.bin/_mocha --exit -r tests/lib/mocha_colors.js tests/"
+  },
+  "engines": {
+    "node": ">=6.17.1",
+    "npm": ">=v3.10.10"
+  },
+  "keywords": [
+    "dotenv",
+    "config",
+    "options"
+  ],
+  "author": "Adolfo Segura Hall",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1"
+  },
+  "homepage": "https://github.com/adsegura/dotenv-plus-options/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adsegura/dotenv-plus-options.git"
+  }
+}
