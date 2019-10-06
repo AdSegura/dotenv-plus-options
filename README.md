@@ -14,6 +14,8 @@ $> npm i dotenv-plus-options
 * NodeJs `>=v6.17.1 (npm v3.10.10)`
 
 # Usage 
+
+### Instantiate Config module
 ```js
 const {Config} = require('dotenv-plus-options');
 let config;
@@ -23,9 +25,10 @@ config = new Config(options);
 config = new Config(options, dotenv_options);
 config = new Config(null, dotenv_options);
 
-config.options = {foo: 'bar', baz: ['foo', 'bar']}
+console.log(config.options);
 ```
 
+### Example Extends Config Class
 ```js
 /**
  .env file on CWD:
