@@ -31,6 +31,18 @@ module.exports = function suite(Config) {
         done();
     });
 
+    it('should read empty .env file and config.dotconf should be empty', done => {
+        const config = new Config(null, {path: __dirname + '/../lib/.custom_empty_env'});
+        expect((Object.keys(config.dotconf)).length === 0).eq(true);
+        done();
+    });
+
+    it('should read bad format .env file and config.dotconf should be empty', done => {
+        const config = new Config(null, {path: __dirname + '/../lib/.bad_env'});
+        expect((Object.keys(config.dotconf)).length === 0).eq(true);
+        done();
+    });
+
     it('should parse Arrays and Objects from .env file', done => {
         const config = new Config(null, {path: __dirname + '/../lib/.custom_env'});
         expect(Array.isArray(config.options.array1)).eq(true);
@@ -40,8 +52,8 @@ module.exports = function suite(Config) {
     });
 
     it('should override .env value with constructor options', done => {
-        const config = new Config({app_key: 'foo'});
-        expect(config.options.app_key).eq('foo');
+        const config = new Config({app_key: 'resistance is futile'});
+        expect(config.options.app_key).eq('resistance is futile');
         const compared = Object.assign({}, getRootEnv(), config.options);
         expect(compared).eql(config.options);
         done();

@@ -1,6 +1,7 @@
 'use strict';
 
 const dotenv = require('dotenv');
+const ConfigError = require('./configError');
 
 /**
  * Config will read config options:
@@ -30,9 +31,15 @@ module.exports = class Config {
      */
     constructor(opt, dotOpt) {
         opt = opt || {};
-        const conf = dotenv.config(dotOpt);
 
-        this.dotconf = conf.parsed ? Config.prepareDotConf(conf.parsed) : {};
+        const dotConf = dotenv.config(dotOpt);
+
+        // dotenv path forced by dotOpt options path?
+        // if any errors parsing custom path throw error
+        if(dotOpt && dotConf.error)
+            throw new ConfigError(dotConf.error);
+
+        this.dotconf = dotConf.parsed ? Config.prepareDotConf(dotConf.parsed) : {};
         this.options = {...this.dotconf, ...opt};
     }
 

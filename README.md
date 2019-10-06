@@ -62,6 +62,21 @@ console.log(app.options);
 ### dotenv options
 * [dotenv options](https://github.com/motdotla/dotenv#options)
 
+### Errors 
+Only one error is thrown, named `AdsegConfigError` 
+when you force dotenv custom .env path and dotenv cannot parse it.
+```js
+const {Config} = require('dotenv-plus-options');
+
+config = new Config(options, {path: 'nonExistingEnvFile'});
+
+//or
+
+config = new Config(null, {path: 'nonExistingEnvFile'});
+
+//throws AdsegConfigError
+````
+
 # Tests
 ```bash
 > npm run test

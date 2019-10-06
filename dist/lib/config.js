@@ -15,6 +15,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var dotenv = require('dotenv');
+
+var ConfigError = require('./configError');
 /**
  * Config will read config options:
  *  - from CWD .env file,
@@ -49,8 +51,11 @@ function () {
     _classCallCheck(this, Config);
 
     opt = opt || {};
-    var conf = dotenv.config(dotOpt);
-    this.dotconf = conf.parsed ? Config.prepareDotConf(conf.parsed) : {};
+    var dotConf = dotenv.config(dotOpt); // dotenv path forced by dotOpt options path?
+    // if any errors parsing custom path throw error
+
+    if (dotOpt && dotConf.error) throw new ConfigError(dotConf.error);
+    this.dotconf = dotConf.parsed ? Config.prepareDotConf(dotConf.parsed) : {};
     this.options = _objectSpread({}, this.dotconf, {}, opt);
   }
   /**
