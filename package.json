@@ -28,7 +28,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "chai": "^4.2.0",
-    "mocha": "^6.2.1"
+    "mocha": "^10.2.0"
   },
   "homepage": "https://github.com/adsegura/dotenv-plus-options/blob/master/README.md",
   "repository": {
